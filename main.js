@@ -1,35 +1,33 @@
-//TODO add imports if needed
-//import { exMain } from "./exclude/exampleAss2.js"
-//TODO add/change doc as needed
-/**
- * TODO - Write functional code for this application. You can call any other function, but usage of ".toString(numberSystem)" and "Number.parseInt(number, numberSystem)" is forbidden (only permitted when used on individual digits).
- * The main function which calls the application. 
- * TODO - Please, add specific description here for the application purpose.
- * @param {string} inputNumber number that is being converted
- * @param {number} inputNumberSystem numerical system that the inputNumber is being converted from
- * @param {number} outputNumberSystem numerical system that the inputNumber is being converted into
- * @returns {string} containing number converted to output system
- */
+/*
+This program uses basic principles of Jackson's structured programming to convert a number from the decimal to the binary number system. The program works by creating an empty string as a result beforehand,
+into which the converted number will then be written. At the beginning of the program there is a selection in case the input number is 0. For other numbers, a while loop is used to repeatedly divide the input number by two
+and round the result down to the nearest whole number. In each step, the remainder (1 or 0) is calculated, which is added into the result string. The loop repeats until the input number is 0.
+When that happens, the loop ends and the converted number is returned.
+*/
 export function main(inputNumber, inputNumberSystem, outputNumberSystem) {
-  //TODO code
-  //let dtoOut = exMain(inputNumber, inputNumberSystem, outputNumberSystem);
+let n = Number(inputNumber);
+let dtoOut = "";
+
+if (n === 0) {
+    dtoOut = "0";
+}
+
+else {
+    while (n > 0) {
+        let remainder = n%2;
+        if (remainder === 0) {
+           dtoOut = "0" + dtoOut;
+        } else {
+            dtoOut = "1" + dtoOut;
+        }
+        n = Math.floor (n / 2);
+    }
+}
   return dtoOut;
 }
-
-/**
- * TODO - Change this to contain all input number systems that your application can convert from.
- * Function which returns which number systems are permitted on input.
- * @returns {Array} array of numbers refering to permitted input systems
- */
 export function permittedInputSystems() {
-	return [10, 2];
+	return [10];
 }
-
-/**
- * TODO - Change this to contain all output number systems that your application can convert to.
- * Function which returns which number systems are permitted on output.
- * @returns {Array} array of numbers refering to permitted output systems
- */
 export function permittedOutputSystems() {
-	return [10, 2];
+	return [2];
 }
